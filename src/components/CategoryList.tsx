@@ -5,7 +5,10 @@ export default function CategoryList() {
 
   return (
     <section className="container category-section">
-      <h2 className="section-title">Danh mục sản phẩm</h2>
+      <div className="section-head">
+        <h2 className="section-title">Danh mục sản phẩm</h2>
+        <span className="section-sub">{categories.length} thương hiệu</span>
+      </div>
       <div className="category-list">
         {categories.map((cat) => (
           <span key={cat} className="category-chip">
