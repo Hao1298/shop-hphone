@@ -5,6 +5,8 @@ type Props = {
 };
 
 export default function ProductCard({ product }: Props) {
+  const isOutOfStock = product.stock === 0;
+
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} />
@@ -14,7 +16,10 @@ export default function ProductCard({ product }: Props) {
         <p className="product-price">
           {product.price.toLocaleString("vi-VN")} đ
         </p>
-        <button className="btn">Thêm vào giỏ</button>
+        {isOutOfStock && <span className="out-of-stock">Hết hàng</span>}
+        <button className="btn" disabled={isOutOfStock}>
+          {isOutOfStock ? "Hết hàng" : "Thêm vào giỏ"}
+        </button>
       </div>
     </div>
   );
