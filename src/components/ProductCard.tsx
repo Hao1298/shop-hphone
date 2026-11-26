@@ -1,4 +1,5 @@
 import type { Product } from "../data/products";
+import { formatPrice } from "../utils/format";
 
 type Props = {
   product: Product;
@@ -21,9 +22,7 @@ export default function ProductCard({ product }: Props) {
         </h3>
 
         <div className="product-meta">
-          <p className="product-price">
-            {product.price.toLocaleString("vi-VN")} ₫
-          </p>
+          <p className="product-price">{formatPrice(product.price)}</p>
           {isOutOfStock && <span className="out-of-stock-tag">Hết hàng</span>}
         </div>
 
