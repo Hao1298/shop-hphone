@@ -3,9 +3,10 @@ import { formatPrice } from "../utils/format";
 
 type Props = {
   product: Product;
+  onAddToCart?: (product: Product) => void;
 };
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, onAddToCart }: Props) {
   const isOutOfStock = product.stock === 0;
 
   return (
@@ -26,7 +27,11 @@ export default function ProductCard({ product }: Props) {
           {isOutOfStock && <span className="out-of-stock-tag">Hết hàng</span>}
         </div>
 
-        <button className="btn" disabled={isOutOfStock}>
+        <button
+          className="btn"
+          disabled={isOutOfStock}
+          onClick={() => onAddToCart?.(product)}
+        >
           {isOutOfStock ? "Tạm hết hàng" : "Thêm vào giỏ"}
         </button>
       </div>
